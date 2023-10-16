@@ -5,22 +5,22 @@ red='\033[1;91m'; deep_green='\033[0;32m'; green='\033[1;92m'; yellow='\033[1;93
 stop='\e[0m'; blink='\e[5m';
 
 print_ok=" no functionality has been installed "
-auto_commit="auto commit - updated"
-script_version="0.4.53 Community Edition" 	# pre 0.3
+auto_commit="auto commit on $(date +'%d-%m-%Y %I:%M')"
+script_version="0.4.55 Community Edition" # pre 0.3
 
 
 function main_menu() {
-	printf " [ 1]  status\n"
-	printf " [ 2]  auto add\n"
-	printf " [ 3]$yellow  custom add\n$stop"
-	printf " [ 4]  auto commit\n"
-	printf " [ 5]$yellow  custom commit$blue [all] \n$stop"
-	printf " [ 6]  pull\n"
-	printf " [ 7]  push\n"
-	printf " [ 8]  log\n"
-	printf " [ 9]  view specific file from log\n"
-	printf " [10]  view repository info\n"
-	printf " [ 0]  quit\n\n"
+	printf "   1  - status\n"
+	printf "   2  - auto add\n"
+	printf "   3$yellow  - custom add\n$stop"
+	printf "   4  - auto commit\n"
+	printf "   5$yellow  - custom commit$blue [all] \n$stop"
+	printf "   6  - pull\n"
+	printf "   7  - push\n"
+	printf "   8  - log\n"
+	printf "   9  - view specific log info\n"
+	printf "   10 - view repository info\n"
+	printf "   0  - quit\n\n"
 }
 
 function pause(){
@@ -45,7 +45,7 @@ while true
 		} 
 		elif [[ $input == 3 ]]; then {
 			# custom add
-			read -p "enter addr % : " custom_add
+			read -p "file name % : " custom_add
 			
 			if [[ `find $custom_add` == $custom_add || `ls | grep $custom_add` == $custom_add ]]; then {
 				printf "\n[*] adding files \n"
@@ -62,7 +62,7 @@ while true
 		} 
 		elif [[ $input == 5 ]]; then {
 			# custom commit 
-			read -p "commit % : " custom_commit 
+			read -p "custom commit % : " custom_commit 
 			printf "[*] adding custom commit \n"
 			git commit -am "$custom_commit"
 			echo && pause
@@ -80,7 +80,9 @@ while true
 		}
 		elif [[ $input == 10 ]]; then {
 			# view repository info
-			echo $print_ok
+			printf "$blue     Name of Remote :$stop $(git remote)\n$blue"; 
+			printf "Repository Location :$stop $(git config --get remote.origin.url)\n"
+
 			echo && pause
 		}
 		elif [[ $input == 0 || $input == 'q' || $input == 'exit' || $input == 'quit' || $input == 'quit()'  ]]; then printf "[*] exit \n[*] ok\n" && exit 0
