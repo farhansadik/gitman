@@ -1,7 +1,7 @@
 ## Git Manager 
-A basic git manager to auto generate 
+A basic script for automate git commands
 
-**Basic Options**
+**Basic Options** <br>
 1. status 
 2. auto add
 3. custom add
@@ -12,13 +12,12 @@ A basic git manager to auto generate
 8. log
 9. view specific file from log
 > for this you must need revision tag. for revision tag visit **8** option or type `git log`. And then enter file address. </br>
-11. view repository info
+10. view repository info
 
 **Installation/Usage** </br>
-No need to install, just place `gitman.bash` into your current project directory. Make sure it has execute permission. For permission run `chmod +x gitman.bash`
+No need to install, just place `gitman.bash` into your current project directory. Make sure it has execute permission.
+
 > Run it using `./gitman.bash`
 
 **Support** </br>
-It also support windows mintty, os x, android (termux) and linux.
-
-### Farhan Sadik
+It also support windows mintty, android (termux) and linux.
